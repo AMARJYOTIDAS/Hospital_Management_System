@@ -4,7 +4,7 @@
   "description": "Production Backend REST API for Smart Healthcare & Hospital Management System",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "dev": "nodemon server.js",
     "seed": "node src/seeders/seed.js"
   },

@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { loginUser, clearError } from '../../store/slices/authSlice';
-import { Activity, Lock, Mail, AlertCircle, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import { loginUser, clearError } from "../../store/slices/authSlice";
+import { Activity, Lock, Mail, AlertCircle, ArrowRight } from "lucide-react";
 
 export const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { isAuthenticated, loading, error } = useSelector((state) => state.auth);
+  const { isAuthenticated, loading, error } = useSelector(
+    (state) => state.auth,
+  );
 
-  const redirectPath = location.state?.from?.pathname || '/dashboard';
+  const redirectPath = location.state?.from?.pathname || "/dashboard";
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -29,7 +31,7 @@ export const Login = () => {
   };
 
   // Demo credential autofill helper
-  const handleDemoFill = (demoEmail, demoPass = 'Password@123') => {
+  const handleDemoFill = (demoEmail, demoPass = "Password@123") => {
     dispatch(clearError());
     setEmail(demoEmail);
     setPassword(demoPass);
@@ -93,7 +95,10 @@ export const Login = () => {
                 <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
                   Password
                 </label>
-                <a href="#forgot" className="text-xs text-primary-400 hover:text-primary-300 transition">
+                <a
+                  href="#forgot"
+                  className="text-xs text-primary-400 hover:text-primary-300 transition"
+                >
                   Forgot password?
                 </a>
               </div>
@@ -142,42 +147,42 @@ export const Login = () => {
             <div className="grid grid-cols-2 gap-2 text-xs">
               <button
                 type="button"
-                onClick={() => handleDemoFill('superadmin@smarthealth.com')}
+                onClick={() => handleDemoFill("superadmin@smarthealth.com")}
                 className="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-700 border border-slate-700 text-slate-300 font-medium transition text-left truncate"
               >
                 👑 Super Admin
               </button>
               <button
                 type="button"
-                onClick={() => handleDemoFill('admin@smarthealth.com')}
+                onClick={() => handleDemoFill("admin@smarthealth.com")}
                 className="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-700 border border-slate-700 text-slate-300 font-medium transition text-left truncate"
               >
                 🏥 Hospital Admin
               </button>
               <button
                 type="button"
-                onClick={() => handleDemoFill('dr.smith@smarthealth.com')}
+                onClick={() => handleDemoFill("dr.smith@smarthealth.com")}
                 className="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-700 border border-slate-700 text-slate-300 font-medium transition text-left truncate"
               >
                 🩺 Doctor
               </button>
               <button
                 type="button"
-                onClick={() => handleDemoFill('pharmacist@smarthealth.com')}
+                onClick={() => handleDemoFill("pharmacist@smarthealth.com")}
                 className="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-700 border border-slate-700 text-slate-300 font-medium transition text-left truncate"
               >
                 💊 Pharmacist
               </button>
               <button
                 type="button"
-                onClick={() => handleDemoFill('receptionist@smarthealth.com')}
+                onClick={() => handleDemoFill("receptionist@smarthealth.com")}
                 className="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-700 border border-slate-700 text-slate-300 font-medium transition text-left truncate"
               >
                 🛎️ Receptionist
               </button>
               <button
                 type="button"
-                onClick={() => handleDemoFill('accountant@smarthealth.com')}
+                onClick={() => handleDemoFill("accountant@smarthealth.com")}
                 className="py-2 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-700 border border-slate-700 text-slate-300 font-medium transition text-left truncate"
               >
                 💳 Accountant
