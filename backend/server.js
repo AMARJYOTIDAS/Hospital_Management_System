@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -17,6 +18,10 @@ const appointmentRoutes = require('./src/routes/appointmentRoutes');
 const medicalRecordRoutes = require('./src/routes/medicalRecordRoutes');
 const prescriptionRoutes = require('./src/routes/prescriptionRoutes');
 const pharmacyRoutes = require('./src/routes/pharmacyRoutes');
+const admissionRoutes = require('./src/routes/admissionRoutes');
+const financeRoutes = require('./src/routes/financeRoutes');
+const facilityRoutes = require('./src/routes/facilityRoutes');
+const analyticsRoutes = require('./src/routes/analyticsRoutes');
 
 // Connect to Database
 connectDB();
@@ -94,6 +99,10 @@ app.use('/api/v1/appointments', appointmentRoutes);
 app.use('/api/v1/medical-records', medicalRecordRoutes);
 app.use('/api/v1/prescriptions', prescriptionRoutes);
 app.use('/api/v1/pharmacy', pharmacyRoutes);
+app.use('/api/v1/admissions', admissionRoutes);
+app.use('/api/v1/finance', financeRoutes);
+app.use('/api/v1/facilities', facilityRoutes);
+app.use('/api/v1/analytics', analyticsRoutes);
 
 // Handle Undefined Routes (404)
 app.use('*', (req, res) => {

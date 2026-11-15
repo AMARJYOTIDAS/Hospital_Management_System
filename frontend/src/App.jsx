@@ -5,12 +5,20 @@ import { fetchCurrentUser } from './store/slices/authSlice';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
 import { DashboardLayout } from './components/layout/DashboardLayout';
 import { Login } from './pages/auth/Login';
+import { Register } from './pages/auth/Register';
 import { Dashboard } from './pages/dashboard/Dashboard';
 import { Patients } from './pages/patients/Patients';
 import { Doctors } from './pages/doctors/Doctors';
+import { Departments } from './pages/departments/Departments';
 import { Appointments } from './pages/appointments/Appointments';
 import { MedicalRecords } from './pages/clinical/MedicalRecords';
 import { Pharmacy } from './pages/pharmacy/Pharmacy';
+import { Admissions } from './pages/admissions/Admissions';
+import { Finance } from './pages/finance/Finance';
+import { RecoveryAnalytics } from './pages/analytics/RecoveryAnalytics';
+import { Facilities } from './pages/facilities/Facilities';
+import { Reports } from './pages/reports/Reports';
+import { Users } from './pages/users/Users';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,8 +32,9 @@ function App() {
 
   return (
     <Routes>
-      {/* Public Route */}
+      {/* Public Routes */}
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
 
       {/* Protected Routes inside Dashboard Layout Shell */}
       <Route
@@ -40,28 +49,19 @@ function App() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="patients" element={<Patients />} />
         <Route path="doctors" element={<Doctors />} />
+        <Route path="departments" element={<Departments />} />
         <Route path="appointments" element={<Appointments />} />
         <Route path="medical-records" element={<MedicalRecords />} />
         <Route path="pharmacy" element={<Pharmacy />} />
+        <Route path="admissions" element={<Admissions />} />
+        <Route path="finance" element={<Finance />} />
+        <Route path="recovery-analytics" element={<RecoveryAnalytics />} />
+        <Route path="facilities" element={<Facilities />} />
+        <Route path="reports" element={<Reports />} />
+        <Route path="users" element={<Users />} />
         
-        {/* Placeholder Route for other modules to be implemented in upcoming phases */}
-        <Route
-          path="*"
-          element={
-            <div className="bg-white p-8 rounded-2xl border border-slate-200 text-center max-w-lg mx-auto mt-12">
-              <h3 className="text-lg font-bold text-slate-800">Module Staged for Phase Rollout</h3>
-              <p className="text-sm text-slate-500 mt-2">
-                This clinical/administrative module will be activated in the next development phase per the approved roadmap.
-              </p>
-              <a
-                href="/dashboard"
-                className="mt-4 inline-block px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700"
-              >
-                Back to Dashboard
-              </a>
-            </div>
-          }
-        />
+        {/* Fallback Route */}
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Route>
     </Routes>
   );

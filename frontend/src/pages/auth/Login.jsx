@@ -139,6 +139,19 @@ export const Login = () => {
             </button>
           </form>
 
+          {/* Create Account Link */}
+          <div className="mt-6 text-center">
+            <p className="text-sm text-slate-400">
+              New patient?{' '}
+              <a
+                href="/register"
+                className="font-medium text-primary-400 hover:text-primary-300 underline underline-offset-4"
+              >
+                Create an account
+              </a>
+            </p>
+          </div>
+
           {/* Quick Demo Role Switcher */}
           <div className="mt-8 pt-6 border-t border-slate-700/60">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3 text-center">
